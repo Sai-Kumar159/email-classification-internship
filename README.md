@@ -90,16 +90,14 @@ Endpoint:
 https://chaitanyasaikumar-email-classifier-internship.hf.space/classify
 
 📥 Expected Request (JSON)
-json
-Copy
-Edit
+```json
 {
   "input_email_body": "string containing the email"
 }
+```
+
 📤 Expected Response (JSON)
-json
-Copy
-Edit
+```json
 {
   "input_email_body": "string containing the email",
   "list_of_masked_entities": [
@@ -112,36 +110,42 @@ Edit
   "masked_email": "string containing the masked email",
   "category_of_the_email": "string containing the class"
 }
-📡 Test the API
-🧪 Using curl:
-bash
-Copy
-Edit
+```
+
+🧪 Using curl
+```bash
 curl -X POST https://chaitanyasaikumar-email-classifier-internship.hf.space/classify \
   -H "Content-Type: application/json" \
   -d '{"input_email_body": "Please update my credit card number 1234-5678-9876-5432"}'
-🧪 Using PowerShell:
-powershell
-Copy
-Edit
+```
+
+
+🧪 Using PowerShell
+```powershell
 Invoke-RestMethod -Uri "https://chaitanyasaikumar-email-classifier-internship.hf.space/classify" `
   -Method POST `
   -Body '{"input_email_body": "Please update my phone number to 9876543210"}' `
   -ContentType "application/json"
+```
+
+
+  
 🧭 API Documentation
 Access interactive Swagger UI:
 📎 https://chaitanyasaikumar-email-classifier-internship.hf.space/docs
 
-📁 Project Structure
-plaintext
-Copy
-Edit
+ Project Structure
+```plaintext
 ├── app.py                 # Main FastAPI application
 ├── models.py              # Email classification and model training
 ├── utils.py               # Helper functions (PII detection/masking)
 ├── requirements.txt       # Python dependencies
 ├── *.joblib               # Serialized ML models
 ├── combined_emails_with_natural_pii (1).csv  # Training dataset with PII examples
+```
+
+
+
 🔗 GitHub Repository
 👉 Visit the GitHub Repo :
 https://github.com/Sai-Kumar159/email-classification-internship
