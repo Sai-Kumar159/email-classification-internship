@@ -85,6 +85,11 @@ python models.py
 
 # 5. Run the FastAPI app
 uvicorn app:app --reload
+
+It is Deployed in Hugging Face to check the work:
+https://huggingface.co/ChaitanyaSaiKumar
+
+
 🔗 Deployed API
 Endpoint:
 https://chaitanyasaikumar-email-classifier-internship.hf.space/classify
