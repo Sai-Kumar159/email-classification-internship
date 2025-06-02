@@ -128,6 +128,63 @@ Invoke-RestMethod -Uri "https://chaitanyasaikumar-email-classifier-internship.hf
   -ContentType "application/json"
 ```
 
+Deployment & Example Test Response
+Deployed API Endpoint:
+https://chaitanyasaikumar-email-classifier-internship.hf.space/classify
+
+Tested via Postman with POST Request:
+Content-Type: application/json
+```json { "input_email_body": "Subject: Critical System Outage - Unable to Login\n\nDear Support,\n\nMy name is Emily White. The main production system has been down since 10:00 AM IST. I cannot log in, and it's affecting all operations. My user ID is EW-1234. I'm at 123 Main Street. Please investigate this urgent issue immediately. My credit card is 4567 8901 2345 6789, CVV 567, expiry 05/27. My contact email is emily.w@business.com." } ``` 
+
+
+👇 Sample Response:
+```json { "input_email_body": "...", "list_of_masked_entities": [ { "position": [382, 402], "classification": "email", "entity": "emily.w@business.com" }, { "position": [355, 360], "classification": "card_expiry_number", "entity": "05/27" }, { "position": [343, 346], "classification": "cvv_number", "entity": "567" }, { "position": [318, 337], "classification": "credit_debit_card_number", "entity": "4567 8901 2345 6789" }, { "position": [77, 88], "classification": "full_name", "entity": "Emily White" } ], "masked_email": "...", "category_of_the_email": "Incident" } ``` 
+
+
+### 🚀 Sample Input
+
+```json
+{
+  "input_email_body": "Subject: Critical System Outage - Unable to Login\n\nDear Support,\n\nMy name is Emily White. The main production system has been down since 10:00 AM IST. I cannot log in, and it's affecting all operations. My user ID is EW-1234. I'm at 123 Main Street. Please investigate this urgent issue immediately. My credit card is 4567 8901 2345 6789, CVV 567, expiry 05/27. My contact email is emily.w@business.com."
+}
+```
+
+### ✅ Sample Output
+
+```json
+{
+  "input_email_body": "Subject: Critical System Outage - Unable to Login\n\nDear Support,\n\nMy name is Emily White. The main production system has been down since 10:00 AM IST. I cannot log in, and it's affecting all operations. My user ID is EW-1234. I'm at 123 Main Street. Please investigate this urgent issue immediately. My credit card is 4567 8901 2345 6789, CVV 567, expiry 05/27. My contact email is emily.w@business.com.",
+  "list_of_masked_entities": [
+    {
+      "position": [382, 402],
+      "classification": "email",
+      "entity": "emily.w@business.com"
+    },
+    {
+      "position": [355, 360],
+      "classification": "card_expiry_number",
+      "entity": "05/27"
+    },
+    {
+      "position": [343, 346],
+      "classification": "cvv_number",
+      "entity": "567"
+    },
+    {
+      "position": [318, 337],
+      "classification": "credit_debit_card_number",
+      "entity": "4567 8901 2345 6789"
+    },
+    {
+      "position": [77, 88],
+      "classification": "full_name",
+      "entity": "Emily White"
+    }
+  ],
+  "masked_email": "Subject: Critical System Outage - Unable to Login\n\nDear Support,\n\nMy name is [full_name]. The main production system has been down since 10:00 AM IST. I cannot log in, and it's affecting all operations. My user ID is EW-1234. I'm at 123 Main Street. Please investigate this urgent issue immediately. My credit card is [credit_debit_card_number], CVV [cvv_number], expiry [card_expiry_number]. My contact email is [email].",
+  "category_of_the_email": "Incident"
+}
+```
 
   
 🧭 API Documentation
