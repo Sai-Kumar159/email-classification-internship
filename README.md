@@ -11,32 +11,95 @@ sdk_version: 5.32.0
 # email-classification-internship
 
 
-Content:
-Project Title: Email Classification for Support Team
-Overview: Briefly explain what the project does (classifies support emails, handles PII).
-Features:
-Email classification into categories (Incident, Request, Change, Problem).
-PII masking (listing all PII types you mask: full name, email, phone, DOB, Aadhar, Credit/Debit Card, CVV, Card Expiry).
-PII demasking for original output.
-Deployed as a REST API.
-Technology Stack: Python, FastAPI, scikit-learn (TfidfVectorizer, RandomForestClassifier), imblearn (SMOTE), joblib.
-Setup Instructions (How to run locally):
-Clone the repository.
-Create and activate a virtual environment (python -m venv venv, .\venv\Scripts\activate).
-Install dependencies (pip install -r requirements.txt).
-Train the model (python models.py).
-Run the API (uvicorn app:app --reload).
-API Usage:
-Clearly state the Deployed API Endpoint: https://chaitanyasaikumar-email-classifier-internship.hf.space/classify
-Show the Expected Request Body (JSON):
-JSON
+📧 Email Classification for Support Team
+🚀 Overview
+This project classifies support emails into predefined categories and masks Personally Identifiable Information (PII). It is deployed as a RESTful API and designed to assist customer support teams in organizing and securing incoming emails efficiently.
 
+✨ Features
+✅ Email Classification
+Automatically classifies emails into one of the following categories:
+
+Incident
+
+Request
+
+Change
+
+Problem
+
+🔒 PII Masking
+Detects and masks sensitive information types:
+
+Full Name
+
+Email Address
+
+Phone Number
+
+Date of Birth
+
+Aadhar Number
+
+Credit/Debit Card Number
+
+CVV
+
+Card Expiry Date
+
+🔓 PII Demasking
+Ability to retrieve the original data when required (securely handled).
+
+🌐 Deployed as a REST API
+
+🛠️ Technology Stack
+Python
+
+FastAPI – for building the REST API
+
+scikit-learn – for TF-IDF and RandomForestClassifier
+
+imblearn (SMOTE) – to handle imbalanced datasets
+
+joblib – to persist models
+
+🖥️ Setup Instructions (Run Locally)
+bash
+Copy
+Edit
+# 1. Clone the repository
+git clone https://github.com/Sai-Kumar159/email-classification-internship.git
+cd email-classification-internship
+
+# 2. Create and activate virtual environment
+python -m venv venv
+# Windows
+.\venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Train the model
+python models.py
+
+# 5. Run the FastAPI app
+uvicorn app:app --reload
+🔗 Deployed API
+Endpoint:
+https://chaitanyasaikumar-email-classifier-internship.hf.space/classify
+
+📥 Expected Request (JSON)
+json
+Copy
+Edit
 {
   "input_email_body": "string containing the email"
 }
-Show the Expected Response Body (JSON):
-JSON
-
+📤 Expected Response (JSON)
+json
+Copy
+Edit
 {
   "input_email_body": "string containing the email",
   "list_of_masked_entities": [
@@ -49,7 +112,38 @@ JSON
   "masked_email": "string containing the masked email",
   "category_of_the_email": "string containing the class"
 }
-Provide a curl example (or PowerShell Invoke-RestMethod) for testing the deployed API.
-Mention the interactive docs at /docs (e.g., https://chaitanyasaikumar-email-classifier-internship.hf.space/docs).
-Project Structure: Briefly list the files and their purpose (app.py, models.py, utils.py, requirements.txt, .joblib files, combined_emails_with_natural_pii (1).csv).
-Link to GitHub Repository: https://github.com/Sai-Kumar159/email-classification-internship
+📡 Test the API
+🧪 Using curl:
+bash
+Copy
+Edit
+curl -X POST https://chaitanyasaikumar-email-classifier-internship.hf.space/classify \
+  -H "Content-Type: application/json" \
+  -d '{"input_email_body": "Please update my credit card number 1234-5678-9876-5432"}'
+🧪 Using PowerShell:
+powershell
+Copy
+Edit
+Invoke-RestMethod -Uri "https://chaitanyasaikumar-email-classifier-internship.hf.space/classify" `
+  -Method POST `
+  -Body '{"input_email_body": "Please update my phone number to 9876543210"}' `
+  -ContentType "application/json"
+🧭 API Documentation
+Access interactive Swagger UI:
+📎 https://chaitanyasaikumar-email-classifier-internship.hf.space/docs
+
+📁 Project Structure
+plaintext
+Copy
+Edit
+├── app.py                 # Main FastAPI application
+├── models.py              # Email classification and model training
+├── utils.py               # Helper functions (PII detection/masking)
+├── requirements.txt       # Python dependencies
+├── *.joblib               # Serialized ML models
+├── combined_emails_with_natural_pii (1).csv  # Training dataset with PII examples
+🔗 GitHub Repository
+👉 Visit the GitHub Repo :
+https://github.com/Sai-Kumar159/email-classification-internship
+
+
